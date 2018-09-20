@@ -38,3 +38,8 @@ presets使用"@babel/preset-env", "@babel/preset-react"
 const renderMethod = !!module.hot ? ReactDOM.render : ReactDOM.hydrate;
 
 9. Chrome preserve log选项很有用，特别在单页面HMR的时候。
+
+10.eslint:
+0：禁止使用该规则
+1：将该规则定义为警告等级（不影响exit code）
+2：将该规则定义为错误等级（exit code为1）

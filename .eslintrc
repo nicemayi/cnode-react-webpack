@@ -1,0 +1,10 @@
+{
+    "extends": "standard",
+    "rules": {
+        "semi": [2],
+        "arrow-parens": [0],
+        "indent": ["error", 4],
+        "global-require": [0],
+        "react/jsx-filename-extension": [0]
+    }
+}
