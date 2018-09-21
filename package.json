@@ -6,7 +6,7 @@
   "scripts": {
     "clear": "rimraf ./dist",
     "dev:client": "cross-env NODE_ENV=development webpack-dev-server --config build/webpack.config.client.js --mode development",
-    "dev:server": "cross-env NODE_ENV=development node server/index.js",
+    "dev:server": "nodemon server/index.js",
     "build:client": "webpack --config build/webpack.config.client.js --mode development",
     "build:server": "webpack --config build/webpack.config.server.js --mode development",
     "build": "yarn run clear && yarn run build:client && yarn run build:server",
@@ -51,16 +51,19 @@
     "http-proxy-middleware": "^0.19.0",
     "husky": "^0.14.3",
     "memory-fs": "^0.4.1",
+    "nodemon": "^1.18.4",
     "rimraf": "^2.6.2",
     "webpack": "^4.19.1",
     "webpack-cli": "^3.1.0",
-    "webpack-dev-server": "^3.1.8"
+    "webpack-dev-server": "^3.1.8",
+    "webpack-merge": "^4.1.4"
   },
   "dependencies": {
     "axios": "^0.18.0",
     "express": "^4.16.3",
     "react": "^16.5.2",
     "react-dom": "^16.5.2",
-    "react-hot-loader": "^4.3.8"
+    "react-hot-loader": "^4.3.8",
+    "serve-favicon": "^2.5.0"
   }
 }

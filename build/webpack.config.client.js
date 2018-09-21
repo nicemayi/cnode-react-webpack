@@ -1,43 +1,24 @@
 const path = require('path');
 const webpack = require('webpack');
 const HTMLWebpackPlugin = require('html-webpack-plugin');
+const webpackMerge = require('webpack-merge');
+const baseConfig = require('./webpack.base');
 
 const isDev = process.env.NODE_ENV === 'development';
 
-const config = {
+const config = webpackMerge(baseConfig, {
     entry: {
         index: path.resolve(__dirname, '..', 'client', 'index.js'),
     },
     output: {
         filename: '[name].[hash].js',
-        path: path.resolve(__dirname, '..', 'dist'),
-        publicPath: '/public/',
-    },
-    module: {
-        rules: [
-            {
-                enforce: 'pre',
-                test: /\.jsx?$/,
-                loader: 'eslint-loader',
-                exclude: [
-                    path.resolve(__dirname, '..', 'node_modules'),
-                ],
-            },
-            {
-                test: /\.jsx?$/,
-                exclude: [
-                    path.resolve(__dirname, '..', 'node_modules'),
-                ],
-                loader: 'babel-loader',
-            },
-        ],
     },
     plugins: [
         new HTMLWebpackPlugin({
             template: path.resolve(__dirname, '..', 'client', 'index.html'),
         }),
     ],
-};
+});
 
 if (isDev) {
     config.entry = {
@@ -60,6 +41,6 @@ if (isDev) {
         },
     };
     config.plugins.push(new webpack.HotModuleReplacementPlugin());
-}
+};
 
 module.exports = config;
