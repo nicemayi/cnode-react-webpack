@@ -1,14 +1,19 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
+import { BrowserRouter } from 'react-router-dom';
 import { AppContainer } from 'react-hot-loader';
 
-import App from './App';
+import App from './views/App';
 
 const root = document.getElementById('root');
 const renderMethod = module.hot ? ReactDOM.render : ReactDOM.hydrate;
 const render = Component => {
     renderMethod(
-        <AppContainer><Component /></AppContainer>,
+        <AppContainer>
+            <BrowserRouter>
+                <Component />
+            </BrowserRouter>
+        </AppContainer>,
         root,
     );
 };
@@ -16,8 +21,8 @@ const render = Component => {
 render(App);
 
 if (module.hot) {
-    module.hot.accept('./App', () => {
-        const NextApp = require('./App').default;
+    module.hot.accept('./views/App', () => {
+        const NextApp = require('./views/App').default;
         render(NextApp);
     });
 }
